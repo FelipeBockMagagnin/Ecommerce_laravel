@@ -8,7 +8,7 @@
 
     @include('includes.headerUser')
 
-    <div id="content">
+    <div >
         @yield('content')
     </div>
 </div>
