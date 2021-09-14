@@ -1,4 +1,4 @@
-@extends('templates.default')
+@extends('templates.defaultUser')
 @section('content')
 <div class='card-container'>
     <div class="card" style="width: 12rem;">

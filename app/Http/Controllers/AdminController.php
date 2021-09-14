@@ -45,9 +45,8 @@ class AdminController extends Controller {
             return redirect()->route('admin.show_login')->with('error', 'Preencha todos os campos');
         }
 
-        $results = DB::select('select * from users where email = ? and senha = ?', [$email, $senha]);
-
-        //setar a session
+        $results = DB::select('select * from users where email = ? and senha = ? and tipo = ?', [$email, $senha, 0]);
+                
         
         if(count($results) > 0){
             return redirect()->route('acesso.produtos');

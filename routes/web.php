@@ -30,8 +30,11 @@ Route::post('/create_user_admin', [AdminController::class,'create'])->name('admi
 
 
 
-Route::get('/login', [UserController::class, 'show_login']);
-Route::get('/create_user', [UserController::class, 'show_create_user']);
+Route::get('/login', [UserController::class, 'show_login'])->name('user.show_login');
+Route::get('/create_user', [UserController::class, 'show_create'])->name('user.show_create');
+
+Route::post('/do_login_user', [UserController::class, 'login'])->name('user.login');
+Route::post('/create_user_normal', [UserController::class, 'create'])->name('user.create');
 
 
 Route::get('acesso/produtos', [ShopController::class, 'show_produtos'])->name('acesso.produtos');
