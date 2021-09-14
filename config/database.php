@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => 'pgsql',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,12 +45,12 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'url' => 'postgres://cztboomy:pzXMwmHLp0k8wXZTXU3gSBfOa-YQiXbX@kesavan.db.elephantsql.com/cztboomy',
+            'host' => 'kesavan.db.elephantsql.com',
+            'port' => '5432',
+            'database' => 'cztboomy',
+            'username' => 'cztboomy',
+            'password' => 'pzXMwmHLp0k8wXZTXU3gSBfOa-YQiXbX',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -65,12 +65,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'url' => 'postgres://cztboomy:pzXMwmHLp0k8wXZTXU3gSBfOa-YQiXbX@kesavan.db.elephantsql.com/cztboomy',
+            'host' => 'kesavan.db.elephantsql.com',
+            'port' => '5432',
+            'database' => 'cztboomy',
+            'username' => 'cztboomy',
+            'password' => 'pzXMwmHLp0k8wXZTXU3gSBfOa-YQiXbX',
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,

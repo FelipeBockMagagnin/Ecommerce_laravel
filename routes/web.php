@@ -21,16 +21,20 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login_admin', [AdminController::class, 'show_login']);
+Route::get('/login_admin', [AdminController::class, 'show_login'])->name('admin.show_login');
+Route::post('/do_login_admin', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/create_admin', [AdminController::class, 'show_create'])->name('admin.show_create');
+Route::post('/create_user_admin', [AdminController::class,'create'])->name('admin.create');
 
-Route::get('/create_admin', [AdminController::class, 'show_create']);
+
+
 
 
 Route::get('/login', [UserController::class, 'show_login']);
 Route::get('/create_user', [UserController::class, 'show_create_user']);
 
 
-Route::get('/produtos', [ShopController::class, 'show_produtos']);
+Route::get('acesso/produtos', [ShopController::class, 'show_produtos'])->name('acesso.produtos');
 
 //Route::get('/produto/{id}', function ($id) {
 //    return [ShopController::class, 'show_produto'];
