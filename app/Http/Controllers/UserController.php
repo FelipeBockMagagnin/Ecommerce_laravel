@@ -49,7 +49,7 @@ class UserController extends Controller {
         $results = DB::select('select * from users where email = ? and senha = ? and tipo = ?', [$email, $senha, 1]);
                 
         if(count($results) > 0){
-            return redirect()->route('acesso.produtos');
+            return redirect()->route('shop.produtos');
         } else {
             return redirect()->route('user.show_login')->with('error', 'Login inválido');
         }        

@@ -49,7 +49,7 @@ class AdminController extends Controller {
                 
         
         if(count($results) > 0){
-            return redirect()->route('acesso.produtos');
+            return redirect()->route('shop.produtos');
         } else {
             return redirect()->route('admin.show_login')->with('error', 'Login inválido');
         }        

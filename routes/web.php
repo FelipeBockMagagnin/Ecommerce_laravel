@@ -27,9 +27,6 @@ Route::get('/create_admin', [AdminController::class, 'show_create'])->name('admi
 Route::post('/create_user_admin', [AdminController::class,'create'])->name('admin.create');
 
 
-
-
-
 Route::get('/login', [UserController::class, 'show_login'])->name('user.show_login');
 Route::get('/create_user', [UserController::class, 'show_create'])->name('user.show_create');
 
@@ -42,3 +39,5 @@ Route::get('acesso/produtos', [ShopController::class, 'show_produtos'])->name('s
 Route::get('acesso/produto/{id}', [ShopController::class, 'show_produto'])->name('shop.produto');
 
 Route::post('/finalizar_compra/{id}', [ShopController::class, 'finalizar_compra'])->name('shop.buy');
+
+Route::post('/calcular_cep', [ShopController::class, 'calcular_cep'])->name('frete.calcular');
