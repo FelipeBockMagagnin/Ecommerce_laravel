@@ -17,6 +17,12 @@ class UserController extends Controller {
         return view('create');
     }
 
+    public function show_transacoes(){
+        $compras = DB::select('select * from compras order by id');
+
+        return view('transacoes', ['compras' => $compras]);
+    }
+
     public function create(Request $form){
         $email = $form -> email; 
         $senha = $form -> senha;

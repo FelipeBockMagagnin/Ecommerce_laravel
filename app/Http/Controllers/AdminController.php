@@ -46,12 +46,17 @@ class AdminController extends Controller {
         }
 
         $results = DB::select('select * from users where email = ? and senha = ? and tipo = ?', [$email, $senha, 0]);
-                
         
         if(count($results) > 0){
-            return redirect()->route('shop.produtos');
+            return redirect()->route('admin.administrar');
         } else {
             return redirect()->route('admin.show_login')->with('error', 'Login inválido');
         }        
+    }
+
+    public function show_administrar(){
+        $produtos = DB::select('select * from produtos');
+
+        return view('administrar', ['produtos' => $produtos]);
     }
 }

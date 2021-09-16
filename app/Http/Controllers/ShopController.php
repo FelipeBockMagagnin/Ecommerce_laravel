@@ -67,14 +67,15 @@ class ShopController extends Controller {
             // 'aviso_recebimento' => '1', // Náo obrigatórios
         ];
 
-        $retorno = Correios::frete($dados);
-    
-
+        $retorno = Correios::frete($dados);   
         $endereco = Correios::cep($cep);
 
+        if(!isset($endereco['cidade'])){
+            return redirect('/acesso/produto/'. $id)->with('error', 'cep não encontrado');
+        }
 
-        //return var_dump( $retorno);
-
-        return redirect('/acesso/produto/'. $id)->with('calculo_cep', 'Frete para ' . $endereco['cidade'] . ' - ' . $endereco['uf'] . ' no valor de ' . $retorno[0]['valor'] . ' com prazo de entrega de ' . $retorno[0]['prazo'] . ' dias');
+        return redirect('/acesso/produto/'. $id)
+            ->with(['calculo_cep' => 'Frete para ' . $endereco['cidade'] . ' - ' . $endereco['uf'] . ' no valor de R$' . $retorno[0]['valor'] . ' com prazo de entrega de ' . $retorno[0]['prazo'] . ' dias',
+                    'valor_cep' =>  $retorno[0]['valor']]);
     }
 }
