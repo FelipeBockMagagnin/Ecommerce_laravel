@@ -10,7 +10,7 @@
             <p class="card-text">Preço: {{ $produto->valor }}</p>
             <p class="card-text">Estoque: {{ $produto->estoque }}</p>
 
-            <a href="#" class="btn btn-primary" style='display: block'>Comprar</a>
+            <a href="/proj-dev-sistemas/public/acesso/produto/<?php echo $produto->id ?>" class="btn btn-primary" style='display: block'>Comprar</a>
         </div>
     </div>
     @endforeach  

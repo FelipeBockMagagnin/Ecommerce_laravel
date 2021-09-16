@@ -37,10 +37,8 @@ Route::post('/do_login_user', [UserController::class, 'login'])->name('user.logi
 Route::post('/create_user_normal', [UserController::class, 'create'])->name('user.create');
 
 
-Route::get('acesso/produtos', [ShopController::class, 'show_produtos'])->name('acesso.produtos');
+Route::get('acesso/produtos', [ShopController::class, 'show_produtos'])->name('shop.produtos');
 
-//Route::get('/produto/{id}', function ($id) {
-//    return [ShopController::class, 'show_produto'];
-//});
+Route::get('acesso/produto/{id}', [ShopController::class, 'show_produto'])->name('shop.produto');
 
-Route::get('/finalizar_compra', [ShopController::class, 'show_finalizar_compra']);
+Route::post('/finalizar_compra/{id}', [ShopController::class, 'finalizar_compra'])->name('shop.buy');
