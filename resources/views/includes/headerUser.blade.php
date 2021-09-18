@@ -5,12 +5,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <div class="nav-item" style='margin-left: auto;'>
+      <div class="nav-item" >
         <a class="nav-link" href="/proj-dev-sistemas/public/acesso/produtos" style='color: white;'>Produtos</a>
       </div>
 
-      <div class="nav-item" style='margin-left: auto;'>
+      <div class="nav-item">
         <a class="nav-link" href="/proj-dev-sistemas/public/acesso/transacoes" style='color: white;'>Ultimas Compras</a>
+      </div>
+
+      <div class="nav-item" style='margin-left: auto; color: white'>
+        Logado como {{ session('usuario')->nome}}
       </div>
 
       <div class="nav-item">

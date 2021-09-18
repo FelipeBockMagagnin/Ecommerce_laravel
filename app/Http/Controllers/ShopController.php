@@ -36,7 +36,9 @@ class ShopController extends Controller {
             return redirect()->route('shop.produto', ['id' => $id])->with('error', 'Não há estoque diponível para o produto');
         }
 
-        DB::insert('insert into compras (data_compra, valor, quantidade, metodo_pagamento) values(?, ?, ?, ?)', array(now(), $produto[0]->valor, 1, 0));
+        $id_user = $form->session()->get('usuario')->id;
+
+        DB::insert('insert into compras (data_compra, valor, quantidade, metodo_pagamento, id_user) values(?, ?, ?, ?, ?)', array(now(), $produto[0]->valor, 1, 0, $id_user));
         DB::update('update produtos set estoque = ' . $produto[0]->estoque - 1 . ' where id = ?', [$id]);
 
         return redirect()->route('shop.produtos');

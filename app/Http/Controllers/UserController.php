@@ -10,6 +10,7 @@ use DB;
 class UserController extends Controller {
 
     public function show_login(){
+        session()->forget('usuario');
         return view('login');
     }
 
@@ -17,8 +18,8 @@ class UserController extends Controller {
         return view('create');
     }
 
-    public function show_transacoes(){
-        $compras = DB::select('select * from compras order by id');
+    public function show_transacoes(Request $form){
+        $compras = DB::select('select * from compras where id_user =' . $form->session()->get('usuario')->id );
 
         return view('transacoes', ['compras' => $compras]);
     }
@@ -41,6 +42,7 @@ class UserController extends Controller {
 
         DB::insert('insert into users (nome, data_criacao, nascimento, email, senha, tipo) values (?, ?, ?, ?, ?, ?)', array($nome, 'now()', $nascimento, $email, $senha, 1));
 
+        
         return redirect()->route('user.show_login')->with('info', 'Usuário criado com sucesso');
     }
 
@@ -55,6 +57,7 @@ class UserController extends Controller {
         $results = DB::select('select * from users where email = ? and senha = ? and tipo = ?', [$email, $senha, 1]);
                 
         if(count($results) > 0){
+            $form->session()->put('usuario', $results[0]);
             return redirect()->route('shop.produtos');
         } else {
             return redirect()->route('user.show_login')->with('error', 'Login inválido');

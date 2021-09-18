@@ -9,6 +9,7 @@ use DB;
 class AdminController extends Controller {
 
     public function show_login(){
+        session()->forget('usuarioAdmin');
         return view('login_admin');
     }
 
@@ -48,6 +49,7 @@ class AdminController extends Controller {
         $results = DB::select('select * from users where email = ? and senha = ? and tipo = ?', [$email, $senha, 0]);
         
         if(count($results) > 0){
+            $form->session()->put('usuarioAdmin', $results[0]);
             return redirect()->route('admin.administrar');
         } else {
             return redirect()->route('admin.show_login')->with('error', 'Login inválido');
